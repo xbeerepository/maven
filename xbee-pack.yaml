@@ -1,31 +1,28 @@
 schema-version: 1.0
 
-persistent-dirs:
-  - pom:{% pomdir %}:.:{% user %}
-  - repo:/home/{% user %}/.m2:$HOME/.m2:{% user %}
 
 var:
   version: "3.6.3"
   pomdir: /usr/src
   jdk: "8"
   user: default
-  mavenOptions:
-  javaOptions:
 
 pack:
   origin: aws-jdk
   var:
     version: "{% jdk %}"
-    javaOptions: "{% javaOptions %}"
+
    
 provision:
   - url: http://mirrors.standaloneinstaller.com/apache/maven/maven-3/{% version %}/binaries/apache-maven-{% version %}-bin.tar.gz
-  - env: MAVEN_OPTS={% mavenOptions %}
   - systempath: /opt/apache-maven-{% version %}/bin
-  - user: "{% user %}"
+
+
+volumes:
+  - pom:{% pomdir %}:.
+  - repo:/home/{% user %}/.m2:$HOME/.m2
+directory: "{% pomdir %}"
+user: "{% user %}"
 
 command:
-  mvn:
-    cmd: mvn {{ .args }}
-    directory: "{% pomdir %}"
-    user: "{% user %}"
+  mvn: mvn {{ .args }}
