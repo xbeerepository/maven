@@ -7,7 +7,7 @@ var:
   jdk: "8"
   user: default
 
-pack:
+dependency:
   origin: aws-jdk
   var:
     version: "{% jdk %}"
