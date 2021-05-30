@@ -4,13 +4,11 @@ schema-version: 1.0
 var:
   version: "3.6.3"
   pomdir: /usr/src
-  jdk: "8"
   user: default
 
 dependency:
   origin: aws-jdk
-  var:
-    version: "{% jdk %}"
+  alias: jdk
 
    
 provision:
