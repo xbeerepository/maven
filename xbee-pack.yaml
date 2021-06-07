@@ -1,6 +1,14 @@
 schema-version: 1.0
 
+description: |
+  This xbee pack installs maven build tool and expose mvn command
+  Default version of maven is 3.6.3, but looking at url http://mirrors.standaloneinstaller.com/apache/maven/maven-3, you will see all versions
+  supported by this pack.
+  This pack depends on a jdk pack, whose version can also be customized. 
 
+  Example: xbee register --var version=3.8.1 --var jdk.version=8 maven
+           xbee mvn clean install
+           
 var:
   version: "3.6.3"
   pomdir: /usr/src
