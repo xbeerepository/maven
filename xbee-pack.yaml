@@ -11,7 +11,7 @@ description: |
            
 var:
   version: "3.6.3"
-  pomdir: /usr/src
+  app: /app
   user: default
 
 dependency:
@@ -25,9 +25,9 @@ provision:
 
 
 volumes:
-  - pom:{% pomdir %}:.
+  - app:{% app %}:.
   - repo:/home/{% user %}/.m2:$HOME/.m2
-directory: "{% pomdir %}"
+directory: "{% app %}"
 user: "{% user %}"
 
 command:
