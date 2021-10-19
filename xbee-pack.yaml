@@ -20,7 +20,7 @@ dependency:
 
    
 provision:
-  - url: http://mirrors.standaloneinstaller.com/apache/maven/maven-3/{% version %}/binaries/apache-maven-{% version %}-bin.tar.gz
+  - url: https://archive.apache.org/dist/maven/maven-3/{% version %}/binaries/apache-maven-{% version %}-bin.tar.gz
   - systempath: /opt/apache-maven-{% version %}/bin
 
 
