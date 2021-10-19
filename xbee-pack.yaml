@@ -6,7 +6,8 @@ description: |
   supported by this pack.
   This pack depends on a jdk pack, whose version can also be customized. 
 
-  Example: xbee register --var version=3.8.1 --var jdk.version=8 maven
+  Example: xbee provision --var version=3.8.1 --var jdk.version=8.302.08.1 --alias maven3.8.1
+           xbee register maven3.8.1
            xbee mvn clean install
            
 var:
@@ -32,3 +33,4 @@ user: "{% user %}"
 
 command:
   mvn: mvn {{ .args }}
+
