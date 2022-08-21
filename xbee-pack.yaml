@@ -10,7 +10,7 @@ description: |
            xbee register maven3.8.1
            xbee mvn clean install
            
-var:
+in:
   version: "3.6.3"
 
 dependency:
@@ -24,7 +24,7 @@ provision:
 
 
 volumes:
-  - repo:/home/{% user %}/.m2:$HOME/.m2
+  - repo:/home/{% xbeeUser %}/.m2:$HOME/.m2
 
 command:
   mvn: mvn {{ .args }}
