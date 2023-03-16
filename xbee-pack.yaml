@@ -9,7 +9,7 @@ description: |
   Example: xbee provision --var version=3.8.1 --var jdk.version=8.302.08.1 --alias maven3.8.1 maven
            xbee register maven3.8.1
            xbee mvn clean install
-           
+
 in:
   version: "3.6.3"
 
@@ -22,9 +22,10 @@ provision:
   - url: https://archive.apache.org/dist/maven/maven-3/{% version %}/binaries/apache-maven-{% version %}-bin.tar.gz
   - systempath: /opt/apache-maven-{% version %}/bin
 
+up: echo Hello Eric
 
-volumes:
-  - repo:/home/{% xbeeUser %}/.m2:$HOME/.m2
+bind:
+  repo: $HOME/.m2:/home/{% xbeeUser %}/.m2
 
 command:
   mvn: mvn {{ .args }}
