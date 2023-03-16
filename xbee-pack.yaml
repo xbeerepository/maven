@@ -11,7 +11,7 @@ description: |
            xbee mvn clean install
 
 in:
-  version: "3.6.3"
+  version: "3.8.8"
 
 dependency:
   origin: aws-jdk
@@ -22,7 +22,6 @@ provision:
   - url: https://archive.apache.org/dist/maven/maven-3/{% version %}/binaries/apache-maven-{% version %}-bin.tar.gz
   - systempath: /opt/apache-maven-{% version %}/bin
 
-up: echo Hello Eric
 
 bind:
   repo: $HOME/.m2:/home/{% xbeeUser %}/.m2
