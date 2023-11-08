@@ -24,7 +24,9 @@ provision:
 
 
 bind:
-  repo: $HOME/.m2:/home/{{ .xbee.user }}/.m2
+  repo:
+    from: $HOME/.m2
+    to: /home/{{ .xbee.user }}/.m2
 
 command:
   mvn: mvn
