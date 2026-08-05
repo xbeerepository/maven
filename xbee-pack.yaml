@@ -21,7 +21,7 @@ dependency:
    
 provision:
   - url: https://archive.apache.org/dist/maven/maven-3/{{ .xbee.version }}/binaries/apache-maven-{{ .xbee.version }}-bin.tar.gz
-  - systempath: /opt/apache-maven-{{ .xbee.version }}/bin
+  - systempath: '{{ .xbee.install }}/apache-maven-{{ .xbee.version }}/bin'
 
 
 bind:
