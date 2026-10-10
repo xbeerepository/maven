@@ -18,7 +18,9 @@ dependency:
   origin: aws-jdk
   alias: jdk
 
-   
+env:
+  MAVEN_OPTS: "--enable-native-access=ALL-UNNAMED"
+
 provision:
   - url: https://archive.apache.org/dist/maven/maven-3/{{ .xbee.version }}/binaries/apache-maven-{{ .xbee.version }}-bin.tar.gz
   - systempath: '{{ .xbee.install }}/apache-maven-{{ .xbee.version }}/bin'
