@@ -1,18 +1,17 @@
 schema-version: 1.0
 
 description: |
-  This xbee pack installs maven build tool and expose mvn command
-  Default version of maven is 3.6.3, but looking at url http://mirrors.standaloneinstaller.com/apache/maven/maven-3, you will see all versions
-  supported by this pack.
-  This pack depends on a jdk pack, whose version can also be customized. 
-
-  Example: xbee provision --var version=3.8.1 --var jdk.version=8.302.08.1 --alias maven3.8.1 maven
-           xbee register maven3.8.1
-           xbee mvn clean install
+  Installs Apache Maven 3.8.8 from a versioned archive.
+  The SHA-256 below was computed after checking the downloaded archive
+  against the SHA-512 published by Apache at:
+  https://archive.apache.org/dist/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz.sha512
+  Changing xbee.version requires updating archiveSha256 as well.
+  Requires an xbee guest binary supporting url.sha256.
 
 var:
   xbee:
     version: "3.8.8"
+  archiveSha256: 17811e108701af5985bf5167abbd47c06e92c6c6bd1c13a1a1c095c9b4ecc32a
 
 dependency:
   origin: aws-jdk
@@ -22,7 +21,9 @@ env:
   MAVEN_OPTS: "--enable-native-access=ALL-UNNAMED"
 
 provision:
-  - url: https://archive.apache.org/dist/maven/maven-3/{{ .xbee.version }}/binaries/apache-maven-{{ .xbee.version }}-bin.tar.gz
+  - url:
+      from: https://archive.apache.org/dist/maven/maven-3/{{ .xbee.version }}/binaries/apache-maven-{{ .xbee.version }}-bin.tar.gz
+      sha256: '{{ .archiveSha256 }}'
   - systempath: '{{ .xbee.install }}/apache-maven-{{ .xbee.version }}/bin'
 
 
@@ -33,4 +34,3 @@ bind:
 
 command:
   mvn: mvn
-
